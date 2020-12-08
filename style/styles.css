@@ -1,0 +1,62 @@
+body{
+    background: rgb(57,57,57);
+    background: -moz-radial-gradient(circle, rgba(57,57,57,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(57,57,57,1) 0%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(circle, rgba(57,57,57,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#393939",endColorstr="#000000",GradientType=1); 
+
+    /* background-image: url("/style/wood_background.png"); */
+}
+
+body {
+    
+    /* display: flex; */
+    justify-content: center;
+
+}
+
+.main{
+    background-color: rgb(119, 69, 4);
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+#board{
+    margin: auto;
+    display: grid;
+    width: 800px;
+    align-content:center;
+    grid-template-columns: repeat(8,100px);
+    grid-template-rows: repeat(8,100px);
+
+    /* Make Unselectable the symbols. Are in fact just text*/
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+ }
+ 
+.grid-item{
+    background-color:rgb(169, 149, 120);
+    font-size: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/style/wood.png");
+}
+
+
+
+.sq-black{
+    background-color:rgb(97, 65, 17);
+}
+
+
+.grid-item:hover{
+    background-color:rgb(216, 192, 155);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/style/wood.png");
+}
