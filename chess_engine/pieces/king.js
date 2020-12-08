@@ -6,5 +6,3 @@ class King extends Piece {
   
 }
 
-
-export default King;
