@@ -1,61 +1,54 @@
-const pieces = {
-    w_king   :  "&#x2654;", w_queen  :  "&#x2655;", w_rook   :  "&#x2656;", w_bishop :  "&#x2657;", w_knight :  "&#x2658;", w_pawn   :  "&#x2659;",
-    b_king   :  "&#x265A;", b_queen  :  "&#x265B;", b_rook   :  "&#x265C;", b_bishop :  "&#x265D;", b_knight :  "&#x265E;", b_pawn   :  "&#9823;"
-};
 
-const pieces_position_row = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight","rook" ]
+import Board from "./board.js"
 
-let board = []
+let board = new Board()
+board.update()
 
-let initBoard=()=>{
-    for(let y = 0; y<8;y++){
-        let row = []
-        for (let x = 0; x<8 ;x++){
-            if(y==0 || y==7){
-                if (y==0){
-                    row.push([pieces["b_"+pieces_position_row[x]]])
-                }else{
-                    row.push([pieces["w_"+pieces_position_row[x]]])
-                }
-            }else if(y==1 || y==6){
-                if (y==1){
-                    row.push([pieces["b_pawn"]])
-                }else{
-                    row.push([pieces["w_pawn"]])
-                }
+
+let history = []
+// let pressed = (clicked_id) => {
+//     history.push(clicked_id)
+//     if (history.length % 2 == 0) {
+//         let movement = history.slice(history.length - 2, history.length + 1)
+//         move(movement[0], movement[1])
+//     }
+//     // let id = clicked_id;
+//     // let el = document.getElementById(id)
+//     // console.log(clicked_id.length, clicked_id)
+//     // click_count.push("Kiwi");   
+//     // console.log(clicked_id, typeof clicked_id
+// }
+
+window.pressed = (clicked_id) => {
+
+    let pos_y = parseInt(clicked_id.charAt(0))
+    let pos_x = parseInt(clicked_id.charAt(2))
+    if (board.board[pos_y][pos_x]){
+        let p = board.board[pos_y][pos_x]
+        console.log(p.moves().filter(move => {
+            let squre = board.board[move[0]][move[1]]
+            if (squre.color !==p.color){
+                document.getElementById(move[0]+"-"+move[1]).style.background = "green"
+                return move
             }
-            else{
-                row.push([""])
-            }
-        }
-        board.push(row)
-    }
-    update()
-}
-
-let update =  () =>{
-    console.log("UPDATE")
-    for(let y = 0; y<8;y++){
-        for (let x = 0; x<8 ;x++){
-            document.getElementById(y+"-"+x).innerHTML = board[y][x];
-        }
+        }))
     }
 }
 
-let click_count = new Array();
 
-let pressed=(clicked_id)=>{
-    let id = clicked_id;
-    let el = document.getElementById(id)
+let move = (pos1, pos2) => {
+    let movePiece = board[parseInt(pos1.charAt(0))][parseInt(pos1.charAt(2))]
+    console.log(movePiece[0].length, movePiece)
 
-    console.log(clicked_id.length, clicked_id)
-    click_count.push("Kiwi");   
+    if (movePiece[0].length !== 0 && pos1!==pos2) {
+        board[parseInt(pos1.charAt(0))][parseInt(pos1.charAt(2))] = ""
+        board[parseInt(pos2.charAt(0))][parseInt(pos2.charAt(2))] = movePiece
+    }else{
+        console.log("invalid")
+    }
 
-      
+
 }
 
-let move =(pos1,pos2)=> {
-    console.log(pos1,pos2)
-}
-initBoard()
-console.log("Restart?")
+// board.initBoard()
+
