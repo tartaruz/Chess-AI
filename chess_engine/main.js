@@ -1,54 +1,51 @@
 
 import Board from "./board.js"
 
-let board = new Board()
-board.update()
+class Game{
+    constructor(){
+        this.turns = 0
+        this.chess = new Board()
+        this.history = []
+        this.chess.update()
+
+    }
+    
+    // Move from one postiopn to an other
+    // Checks that the positions are not the same and that the first one is actually a piece
+    move = (pos1, pos2) => {
+        let cord_1 =  this.position2cordinater(pos1) 
+        let cord_2 =  this.position2cordinater(pos2) 
+        let turn = (this.turns%2==0)?"w":"b"
+        if (this.chess.isValidMove(cord_1, cord_2, turn)){
+            
+            this.chess.doMove(cord_1, cord_2, turn)
+            this.turns += 1
+        }else{
+            console.log("INVALID MOVE")
+        }   
+        console.log(cord_1, cord_2, turn) 
+    }
+    
 
 
-let history = []
-// let pressed = (clicked_id) => {
-//     history.push(clicked_id)
-//     if (history.length % 2 == 0) {
-//         let movement = history.slice(history.length - 2, history.length + 1)
-//         move(movement[0], movement[1])
-//     }
-//     // let id = clicked_id;
-//     // let el = document.getElementById(id)
-//     // console.log(clicked_id.length, clicked_id)
-//     // click_count.push("Kiwi");   
-//     // console.log(clicked_id, typeof clicked_id
-// }
+    // Turns string of format nr-nr to [nr, nr]
+    position2cordinater = (pos) => { return pos.split("-") }
+}
 
+
+
+
+let GAME = new Game()
+
+// Interaction with grid on html page
 window.pressed = (clicked_id) => {
-
-    let pos_y = parseInt(clicked_id.charAt(0))
-    let pos_x = parseInt(clicked_id.charAt(2))
-    if (board.board[pos_y][pos_x]){
-        let p = board.board[pos_y][pos_x]
-        console.log(p.moves().filter(move => {
-            let squre = board.board[move[0]][move[1]]
-            if (squre.color !==p.color){
-                document.getElementById(move[0]+"-"+move[1]).style.background = "green"
-                return move
-            }
-        }))
+    GAME.history.push(clicked_id)
+    console.log(GAME.history)
+    if (GAME.history.length%2 == 0){
+        console.log("a move")
+        GAME.move(GAME.history[GAME.history.length-2], GAME.history[GAME.history.length-1])
     }
+    
 }
 
-
-let move = (pos1, pos2) => {
-    let movePiece = board[parseInt(pos1.charAt(0))][parseInt(pos1.charAt(2))]
-    console.log(movePiece[0].length, movePiece)
-
-    if (movePiece[0].length !== 0 && pos1!==pos2) {
-        board[parseInt(pos1.charAt(0))][parseInt(pos1.charAt(2))] = ""
-        board[parseInt(pos2.charAt(0))][parseInt(pos2.charAt(2))] = movePiece
-    }else{
-        console.log("invalid")
-    }
-
-
-}
-
-// board.initBoard()
 

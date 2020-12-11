@@ -5,12 +5,22 @@ const pieces = {
 const pieces_position_row = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight","rook" ]
 
 class Piece {
-    constructor(color, type) {
+    constructor(color,pos, type) {
       this.color = color;
       this.type = type;
       this.symbol = pieces[this.color+"_"+this.type]
-
+      this.pos = pos
+      this.x = null
+      this.y = null
+      this.getX_Y()
     }
+
+    getX_Y = () =>{
+      this.x = parseInt(this.pos.charAt(2))
+      this.y = parseInt(this.pos.charAt(0))
+    }
+
+    position = () =>{this.position}
     toString=()=> this.symbol;
 }
 

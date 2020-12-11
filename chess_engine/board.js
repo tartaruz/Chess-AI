@@ -13,8 +13,37 @@ class Board {
         this.pieces_position_row = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
         this.board = []
         this.initBoard()
-        console.log("Board made")
     }    
+
+    getAllPieces=()=>{ this.board }
+
+    // Returns true if move is legal
+    isValidMove = (cord_1, cord_2, turn) => {
+        console.log(this.board[cord_1[0]][cord_1[1]].color, turn)
+        if (!this.board[cord_1[0]][cord_1[1]]){ 
+            return false
+
+        
+        }else if (this.board[cord_1[0]][cord_1[1]].color !== turn){
+            return false
+        }else if (cord_1 == cord_2){
+            return false
+        }else{
+            return true
+        }
+    }
+
+    // Peforme a move. Has been validated before 4 sure
+    doMove = (cord_1, cord_2, turn) => {
+        let piece = this.board[cord_1[0]][cord_1[1]]
+        this.board[cord_1[0]][cord_1[1]] = []
+        this.board[cord_2[0]][cord_2[1]] = piece
+        this.update()
+    }
+
+    move = (pos, newPos) =>{
+        let piece = this.board[pos[0]][pos[1]]
+    }
 
     initBoard = () => {
         for (let y = 0; y < 8; y++) {
@@ -41,11 +70,10 @@ class Board {
             this.board.push(row)
         }
 
-        this.board[5][5] = new King("b", "5-5")
-        this.board[5][4] = new King("w", "5-4")
-        this.board[7][7] = new King("w", "7-7")
-        this.board[0][0] = new King("w", "0-0")
-        this.board[5][5] = new Queen("b","5-5")
+        this.board[5][5] = new King("b", "5-5", self)
+
+        this.board[4][4] = new King("w", "4-4", self)
+
     }
     
     update = () => {

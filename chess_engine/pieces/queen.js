@@ -18,7 +18,8 @@ class Queen extends Piece {
     for(let x = -7; x < 8; x++){
         map.push([0,x],[x,0],[x,x],[-x,-x],[x,-x],[-x,x])
     }
-    return map.map(pos => [this.y+pos[0],this.x+pos[1]]).filter(move => (( move[0]<=7 && move[1]<=7 ) && ( move[0]>=0 && move[1]>=0 && move !== [this.y, this.x])) )
+
+
   }
 }
 
