@@ -4,6 +4,7 @@ class King extends Piece {
     super(color,pos, "king")
     this.value = 10;
     this.board = board;
+    
   }
 
   moves = () =>{

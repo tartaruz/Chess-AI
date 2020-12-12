@@ -16,6 +16,7 @@ class Game{
         let cord_1 =  this.position2cordinater(pos1) 
         let cord_2 =  this.position2cordinater(pos2) 
         let turn = (this.turns%2==0)?"w":"b"
+        console.log(cord_1, cord_2, turn)
         if (this.chess.isValidMove(cord_1, cord_2, turn)){
             
             this.chess.doMove(cord_1, cord_2, turn)
@@ -23,16 +24,15 @@ class Game{
         }else{
             console.log("INVALID MOVE")
         }   
-        console.log(cord_1, cord_2, turn) 
     }
     
 
 
     // Turns string of format nr-nr to [nr, nr]
-    position2cordinater = (pos) => { return pos.split("-") }
+    position2cordinater = (pos) => { return [parseInt(pos[0]),parseInt(pos[2])] }
 
 
-    // TODO: A way to create all DOM elements from JS. Paint to do by hand
+    // TODO: A way to create all DOM elements from JS. Pain in my assholes to do by hand
 }
 
 

@@ -1,5 +1,6 @@
 import King from "./pieces/king.js"
 import Queen from "./pieces/queen.js"
+import Pawn from "./pieces/pawn.js"
 
 
 const pieces = {
@@ -9,26 +10,26 @@ const pieces = {
 
 
 class Board {
-    constructor(){
+    constructor() {
         this.pieces_position_row = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
         this.board = []
         this.initBoard()
-    }    
+    }
 
-    getAllPieces=()=>{ this.board }
+    getAllPieces = () => { this.board }
 
     // Returns true if move is legal
     isValidMove = (cord_1, cord_2, turn) => {
-        console.log(this.board[cord_1[0]][cord_1[1]].color, turn)
-        if (!this.board[cord_1[0]][cord_1[1]]){ 
+        // console.log(this.board[cord_1[0]][cord_1[1]], turn)
+        if (!this.board[cord_1[0]][cord_1[1]]) {
             return false
 
-        
-        }else if (this.board[cord_1[0]][cord_1[1]].color !== turn){
+
+        } else if (this.board[cord_1[0]][cord_1[1]].color !== turn) {
             return false
-        }else if (cord_1 == cord_2){
+        } else if (cord_1 == cord_2) {
             return false
-        }else{
+        } else {
             return true
         }
     }
@@ -36,12 +37,17 @@ class Board {
     // Peforme a move. Has been validated before 4 sure
     doMove = (cord_1, cord_2, turn) => {
         let piece = this.board[cord_1[0]][cord_1[1]]
-        this.board[cord_1[0]][cord_1[1]] = []
-        this.board[cord_2[0]][cord_2[1]] = piece
+        let valid = piece.moves()
+        if (valid.includes([cord_2])) {
+            this.board[cord_1[0]][cord_1[1]] = []
+            this.board[cord_2[0]][cord_2[1]] = piece
+        } else {
+            console.log("Not valid", cord_1, "--->", cord_2)
+        }
         this.update()
     }
 
-    move = (pos, newPos) =>{
+    move = (pos, newPos) => {
         let piece = this.board[pos[0]][pos[1]]
     }
 
@@ -70,12 +76,14 @@ class Board {
             this.board.push(row)
         }
 
-        this.board[5][5] = new King("b", "5-5", self)
+        this.board[5][5] = new Pawn("b", "5-5", self)
+        this.board[4][4] = new Pawn("w", "4-4", self)
 
-        this.board[4][4] = new King("w", "4-4", self)
+        // this.board[4][4] = new King("w", "4-4", self)
+        // this.board[1][1] = new Pawn("w", "1-1", self)
 
     }
-    
+
     update = () => {
         console.log("UPDATE")
         for (let y = 0; y < 8; y++) {
@@ -84,7 +92,7 @@ class Board {
             }
         }
     }
-    
+
 }
 
 export default Board;

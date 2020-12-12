@@ -12,6 +12,7 @@ class Piece {
       this.pos = pos
       this.x = null
       this.y = null
+      this.round = 0
       this.getX_Y()
     }
 
