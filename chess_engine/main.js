@@ -30,6 +30,9 @@ class Game{
 
     // Turns string of format nr-nr to [nr, nr]
     position2cordinater = (pos) => { return pos.split("-") }
+
+
+    // TODO: A way to create all DOM elements from JS. Paint to do by hand
 }
 
 
