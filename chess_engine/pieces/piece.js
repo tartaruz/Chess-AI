@@ -12,13 +12,16 @@ class Piece {
       this.pos = pos
       this.x = null
       this.y = null
-      this.round = 0
       this.getX_Y()
     }
 
     getX_Y = () =>{
       this.x = parseInt(this.pos.charAt(2))
       this.y = parseInt(this.pos.charAt(0))
+    }
+
+    cord2pos = (cords) =>{
+      return cords.map(cord =>cord[0].toString()+"-"+cord[1].toString())
     }
 
     position = () =>{this.position}
