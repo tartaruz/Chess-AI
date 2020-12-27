@@ -1,96 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./favicon.ico" rel="icon" type="image/x-icon" />
-    <title>Chess_AI</title>
-</head>
-
-<body>
-    <div class="main">
-        <h1 >Chess-AI</h1>
-        <div id="board">
-
-            <div id="0-0" onClick="pressed(this.id)" class="grid-item grid-item-1">1</div>
-            <div id="0-1" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">2</div>
-            <div id="0-2" onClick="pressed(this.id)" class="grid-item grid-item-1">3</div>
-            <div id="0-3" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">4</div>
-            <div id="0-4" onClick="pressed(this.id)" class="grid-item grid-item-1">5</div>
-            <div id="0-5" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">6</div>
-            <div id="0-6" onClick="pressed(this.id)" class="grid-item grid-item-1">7</div>
-            <div id="0-7" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">8</div>
-
-            <div id="1-0" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">1</div>
-            <div id="1-1" onClick="pressed(this.id)" class="grid-item grid-item-1">2</div>
-            <div id="1-2" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">3</div>
-            <div id="1-3" onClick="pressed(this.id)" class="grid-item grid-item-1">4</div>
-            <div id="1-4" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">5</div>
-            <div id="1-5" onClick="pressed(this.id)" class="grid-item grid-item-1">6</div>
-            <div id="1-6" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">7</div>
-            <div id="1-7" onClick="pressed(this.id)" class="grid-item grid-item-1">8</div>
-
-
-            <div id="2-0" onClick="pressed(this.id)" class="grid-item grid-item-1">1</div>
-            <div id="2-1" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">2</div>
-            <div id="2-2" onClick="pressed(this.id)" class="grid-item grid-item-1">3</div>
-            <div id="2-3" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">4</div>
-            <div id="2-4" onClick="pressed(this.id)" class="grid-item grid-item-1">5</div>
-            <div id="2-5" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">6</div>
-            <div id="2-6" onClick="pressed(this.id)" class="grid-item grid-item-1">7</div>
-            <div id="2-7" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">8</div>
-
-            <div id="3-0" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">1</div>
-            <div id="3-1" onClick="pressed(this.id)" class="grid-item grid-item-1">2</div>
-            <div id="3-2" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">3</div>
-            <div id="3-3" onClick="pressed(this.id)" class="grid-item grid-item-1">4</div>
-            <div id="3-4" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">5</div>
-            <div id="3-5" onClick="pressed(this.id)" class="grid-item grid-item-1">6</div>
-            <div id="3-6" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">7</div>
-            <div id="3-7" onClick="pressed(this.id)" class="grid-item grid-item-1">8</div>
-
-
-            <div id="4-0" onClick="pressed(this.id)" class="grid-item grid-item-1">1</div>
-            <div id="4-1" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">2</div>
-            <div id="4-2" onClick="pressed(this.id)" class="grid-item grid-item-1">3</div>
-            <div id="4-3" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">4</div>
-            <div id="4-4" onClick="pressed(this.id)" class="grid-item grid-item-1">5</div>
-            <div id="4-5" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">6</div>
-            <div id="4-6" onClick="pressed(this.id)" class="grid-item grid-item-1">7</div>
-            <div id="4-7" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">8</div>
-
-            <div id="5-0" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">1</div>
-            <div id="5-1" onClick="pressed(this.id)" class="grid-item grid-item-1">2</div>
-            <div id="5-2" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">3</div>
-            <div id="5-3" onClick="pressed(this.id)" class="grid-item grid-item-1">4</div>
-            <div id="5-4" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">5</div>
-            <div id="5-5" onClick="pressed(this.id)" class="grid-item grid-item-1">6</div>
-            <div id="5-6" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">7</div>
-            <div id="5-7" onClick="pressed(this.id)" class="grid-item grid-item-1">8</div>
-
-
-            <div id="6-0" onClick="pressed(this.id)" class="grid-item grid-item-1">1</div>
-            <div id="6-1" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">2</div>
-            <div id="6-2" onClick="pressed(this.id)" class="grid-item grid-item-1">3</div>
-            <div id="6-3" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">4</div>
-            <div id="6-4" onClick="pressed(this.id)" class="grid-item grid-item-1">5</div>
-            <div id="6-5" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">6</div>
-            <div id="6-6" onClick="pressed(this.id)" class="grid-item grid-item-1">7</div>
-            <div id="6-7" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">8</div>
-
-            <div id="7-0" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">1</div>
-            <div id="7-1" onClick="pressed(this.id)" class="grid-item grid-item-1">2</div>
-            <div id="7-2" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">3</div>
-            <div id="7-3" onClick="pressed(this.id)" class="grid-item grid-item-1">4</div>
-            <div id="7-4" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">5</div>
-            <div id="7-5" onClick="pressed(this.id)" class="grid-item grid-item-1">6</div>
-            <div id="7-6" onClick="pressed(this.id)" class="grid-item sq-black grid-item-1">7</div>
-            <div id="7-7" onClick="pressed(this.id)" class="grid-item grid-item-1">8</div>
-            <div>
-
-</body>
-<script type="module" src="./chess_engine/main.js" crossorigin="" ></script>
-
+<html>
+  <head>
+    <title>Chess</title>
+    <link rel="stylesheet" href="css/chessboard-1.0.0.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="js/chessboard-1.0.0.js"></script>
+  </head>
+  <body>
+    <div id="board1" style="width: 50%"></div>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
